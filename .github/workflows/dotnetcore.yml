@@ -1,0 +1,30 @@
+name: .NET Core
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build -c Release --no-restore
+    - name: Test
+      run: dotnet test -c Debug --no-restore --verbosity normal
+    - name: Pack
+      run: dotnet pack -c Release --no-build --include-symbols
+    - name: Push Nupkg to GitHub Packages
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+      with:
+        nupkg-path: './ReferenceAssemblyGenerator/nupkg/*.nupkg'
+        repo-owner: 'Tyler-IN'
+        gh-user: 'Tyler-IN'
+        token: ${{ secrets.GITHUB_TOKEN }}
