@@ -16,7 +16,7 @@ You can then just provide your reference assembly to them. They will not need ac
 `dotnet refgen -- [-f|--force] [-o|--output <outputfile>] <assemblyPath>`
 
 ### License
-[MIT](https://github.com/ImperialPlugins/ReferenceAssemblyGenerator/blob/master/LICENSE)
+[MIT](https://github.com/Tyler-IN/ReferenceAssemblyGenerator/blob/master/LICENSE)
 
 ### ReferenceAssemblyGenerator vs. Rosyln (/refout and /refonly)
 The C# and Visual Basic .NET compiler (Rosyln) contains the similar options [/refout and /refonly](https://github.com/dotnet/roslyn/blob/master/docs/features/refout.md).
