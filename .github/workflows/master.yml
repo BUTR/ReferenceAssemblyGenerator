@@ -13,9 +13,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+        source-url: https://nuget.pkg.github.com/bannerlord-unofficial-modding-community/index.json
     - name: Install dependencies
       run: dotnet restore
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Build
       run: dotnet build -c Release --no-restore
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Test
       run: dotnet test -c Debug --no-restore --verbosity normal
+      env:
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
