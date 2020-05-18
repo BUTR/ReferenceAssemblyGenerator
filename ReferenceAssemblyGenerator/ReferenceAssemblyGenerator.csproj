@@ -1,40 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <AssemblyName>ReferenceAssemblyGenerator</AssemblyName>
-    <PackageId>ReferenceAssemblyGenerator</PackageId>
-    <Product>Reference Assembly Generator</Product>
-    <Title>Reference Assembly Generator</Title>
-    <PackageOutputPath>./nupkg</PackageOutputPath>
-    <Version>2.0.0</Version>
-    <Copyright>Copyright © 2020 Tyler Young</Copyright>
-    <Authors>Tyler Young, Enes Sadık Özbek &lt;esozbek.me&gt;</Authors>
-    <Company />
-    <Description>Reference assembly generator for .NET modules</Description>
-    <PackageTags>reference assembly</PackageTags>
-    <LangVersion>8</LangVersion>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <ToolCommandName>refgen</ToolCommandName>
-    <IsTool>true</IsTool>
-    <PackAsTool>true</PackAsTool>
-    <PackageProjectUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</PackageProjectUrl>
-    <RepositoryUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</RepositoryUrl>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <AssemblyName Condition="'$(IsTool)'!=''">ReferenceAssemblyGenerator</AssemblyName>
+        <PackageId Condition="'$(IsTool)'!=''">ReferenceAssemblyGenerator</PackageId>
+        <PackageId Condition="'$(IsTool)'==''">ReferenceAssemblyGenerator.Library</PackageId>
+        <OutputType Condition="'$(IsTool)'==''">Library</OutputType>
+        <Product>Reference Assembly Generator</Product>
+        <Title>Reference Assembly Generator</Title>
+        <PackageOutputPath>./nupkg</PackageOutputPath>
+        <Version>2.0.0</Version>
+        <Copyright>Copyright © 2020 Tyler Young</Copyright>
+        <Authors>Tyler Young, Enes Sadık Özbek &lt;esozbek.me&gt;</Authors>
+        <Company />
+        <Description>Reference assembly generator for .NET modules</Description>
+        <PackageTags>reference assembly</PackageTags>
+        <LangVersion>8</LangVersion>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <ToolCommandName Condition="'$(IsTool)'!=''">refgen</ToolCommandName>
+        <PackAsTool Condition="'$(IsTool)'!=''">true</PackAsTool>
+        <PackageProjectUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</PackageProjectUrl>
+        <RepositoryUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
-    <PackageReference Include="dnlib" Version="3.3.2" />
-    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" PrivateAssets="All" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+        <PackageReference Include="dnlib" Version="3.3.2" />
+        <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="..\LICENSE">
-      <Link>LICENSE</Link>
-    </Content>
-    <Content Include="..\README.md">
-      <Link>README.md</Link>
-    </Content>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\LICENSE">
+            <Link>LICENSE</Link>
+        </None>
+        <None Include="..\README.md">
+            <Link>README.md</Link>
+        </None>
+    </ItemGroup>
 
 </Project>
