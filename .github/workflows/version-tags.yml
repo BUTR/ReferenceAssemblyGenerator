@@ -28,7 +28,12 @@ jobs:
       run: dotnet pack -c Release -p:IsTool=true
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
-    - name: Push
-      run: dotnet nuget push 'ReferenceAssemblyGenerator/nupkg/*.nupkg' -s Source -k "${{secrets.GITHUB_TOKEN}}" --skip-duplicate
-      env:
-        DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    - name: Pack
+      run: dotnet pack -c Release --no-build --include-symbols
+    - name: Push Nupkg to GitHub Packages
+      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+      with:
+        nupkg-path: './ReferenceAssemblyGenerator/nupkg/*.nupkg'
+        repo-owner: 'Bannerlord-Unofficial-Tools-Resources'
+        gh-user: 'Bannerlord-Unofficial-Tools-Resources'
+        token: ${{ secrets.GITHUB_TOKEN }}
