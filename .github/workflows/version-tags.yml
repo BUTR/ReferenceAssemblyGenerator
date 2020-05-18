@@ -13,9 +13,9 @@ jobs:
       with:
         dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/bannerlord-unofficial-modding-community/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Install dependencies
       run: dotnet restore
       env:
