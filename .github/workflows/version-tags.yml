@@ -29,6 +29,6 @@ jobs:
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Push
-      run: dotnet nuget push 'nupkg/*.nupkg' -s Source -k "${{secrets.GITHUB_TOKEN}}" --skip-duplicate
+      run: dotnet nuget push 'ReferenceAssemblyGenerator/nupkg/*.nupkg' -s Source -k "${{secrets.GITHUB_TOKEN}}" --skip-duplicate
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
