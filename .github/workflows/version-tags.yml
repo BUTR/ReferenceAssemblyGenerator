@@ -12,7 +12,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-        source-url: https://nuget.pkg.github.com/bannerlord-unofficial-modding-community/index.json
+        source-url: https://nuget.pkg.github.com/bannerlord-unofficial-tools-resources/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -29,6 +29,6 @@ jobs:
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
     - name: Push
-      run: dotnet nuget push 'ReferenceAssemblyGenerator/nupkg/*.nupkg' -s Source -k "${{secrets.GITHUB_TOKEN}}" --skip-duplicate
+      run: dotnet nuget push 'ReferenceAssemblyGenerator/nupkg/*.nupkg' -k "${{secrets.GITHUB_TOKEN}}" --skip-duplicate
       env:
         DOTNET_CLI_TELEMETRY_OPTOUT: 1
