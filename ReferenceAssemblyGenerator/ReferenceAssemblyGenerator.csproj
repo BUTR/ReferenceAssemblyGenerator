@@ -20,7 +20,8 @@
         <ToolCommandName Condition="'$(IsTool)'!=''">refgen</ToolCommandName>
         <PackAsTool Condition="'$(IsTool)'!=''">true</PackAsTool>
         <PackageProjectUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</PackageProjectUrl>
-        <RepositoryUrl>http://github.com/Tyler-IN/ReferenceAssemblyGenerator</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/Bannerlord-Unofficial-Tools-Resources/ReferenceAssemblyGenerator.git</RepositoryUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
     </PropertyGroup>
 
